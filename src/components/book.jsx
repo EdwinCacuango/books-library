@@ -8,7 +8,7 @@ const Book = ({ book }) => {
         <img
           src={book.cover}
           alt={book.title}
-          class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
         />
 
         <div className="flex flex-col justify-between p-4 leading-normal">
