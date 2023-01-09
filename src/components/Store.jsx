@@ -6,6 +6,7 @@ const AppContext = createContext({
   getItem: (id) => {},
   updateItem: (item) => {},
 });
+
 const Store = ({ children }) => {
   const [items, setItems] = useState([]);
 
@@ -33,6 +34,7 @@ const Store = ({ children }) => {
   );
 };
 
+export default Store;
 export function useAppContext() {
   return useContext(AppContext);
 }
