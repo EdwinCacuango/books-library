@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Layout from "../components/layout";
 import { useAppContext } from "../components/Store";
 
 const AddBook = () => {
@@ -49,6 +51,13 @@ const AddBook = () => {
     };
 
     store.createItem(newBook);
+
+    setTitle("");
+    setAuthor("");
+    setCover("");
+    setIntro("");
+    setCompleted(false);
+    setReview("");
   };
   const handleFile = (e) => {
     const element = e.target;
@@ -61,7 +70,7 @@ const AddBook = () => {
     };
   };
   return (
-    <div>
+    <Layout>
       <form onSubmit={handleSubmit}>
         <div>
           <p>Title</p>
@@ -123,7 +132,7 @@ const AddBook = () => {
         </div>
         <button>Register book</button>
       </form>
-    </div>
+    </Layout>
   );
 };
 
