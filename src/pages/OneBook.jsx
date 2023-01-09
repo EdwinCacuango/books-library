@@ -18,12 +18,17 @@ const OneBook = () => {
   }
   return (
     <Layout>
-      <h1>{book.title}</h1>
-      <div>{book.cover ? <img src={book.cover} width="400" /> : ""}</div>
-      <div>{book.author}</div>
-      <div>{book.intro}</div>
-      <div>{book.completed ? "Completado" : "No terminado"}</div>
-      <div>{book.review}</div>
+      <div>
+        <img src="/pileBooks.jpg" />
+        <div>
+          <h1>{book.title}</h1>
+          <div>{book.cover ? <img src={book.cover} width="400" /> : ""}</div>
+          <div>{book.author}</div>
+          <div>{book.intro}</div>
+          <div>{book.completed ? "Completado" : "No terminado"}</div>
+          <div>{book.review}</div>
+        </div>
+      </div>
     </Layout>
   );
 };

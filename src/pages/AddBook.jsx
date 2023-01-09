@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Layout from "../components/layout";
 import { useAppContext } from "../components/Store";
+import { BsFillCloudArrowUpFill } from "react-icons/bs";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
@@ -71,67 +71,79 @@ const AddBook = () => {
   };
   return (
     <Layout>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <p>Title</p>
-          <input
-            name="title"
-            onChange={handleChange}
-            value={title}
-            className="border"
-          />
-        </div>
-        <div>
-          <p>Author</p>
-          <input
-            name="author"
-            onChange={handleChange}
-            value={author}
-            className="border"
-          />
-        </div>
-        <div>
-          <p>Cover</p>
-          <input
-            type="file"
-            name="cover"
-            onChange={handleFile}
-            className="border"
-          />
-          <div>
-            {!!cover ? <img src={cover} width="200" alt="preview" /> : ""}
+      <h1 className="mt-4 m text-4xl">Add a new book</h1>
+      <div className="flex justify-between items-center mx-2">
+        <form onSubmit={handleSubmit} className="w-1/2 text-left mx-4">
+          <div className="my-3">
+            <label className="text-lg">Title</label>
+            <input
+              name="title"
+              onChange={handleChange}
+              value={title}
+              className="border w-full rounded-md px-2 py-1"
+            />
           </div>
+          <div className="my-3">
+            <label>Author</label>
+            <input
+              name="author"
+              onChange={handleChange}
+              value={author}
+              className="border w-full rounded-md px-2 py-1"
+            />
+          </div>
+          <div className="my-3">
+            <label for="file-upload" className="flex items-center gap-3">
+              <BsFillCloudArrowUpFill />
+              Add a cover
+            </label>
+            <input
+              type="file"
+              name="cover"
+              id="file-upload"
+              onChange={handleFile}
+              className="hidden"
+            />
+            <div className="my-3">
+              {!!cover ? <img src={cover} width="200" alt="preview" /> : ""}
+            </div>
+          </div>
+          <div className="my-3">
+            <label>Introduction</label>
+            <textarea
+              name="intro"
+              onChange={handleChange}
+              value={intro}
+              className="border w-full rounded-md px-2 py-1"
+            />
+          </div>
+          <div className="my-3 flex gap-3">
+            <label>Completed</label>
+            <input
+              type="checkbox"
+              name="completed"
+              onChange={handleChange}
+              value={completed}
+              className="border"
+            />
+          </div>
+          <div>
+            <label>Review</label>
+            <textarea
+              name="review"
+              onChange={handleChange}
+              value={review}
+              className="border w-full rounded-md px-2 py-1"
+            />
+          </div>
+          <button className="my-3 bg-orange-500 text-white font-bold w-full">
+            Register book
+          </button>
+        </form>
+        <div className="w-1/2">
+          <img src="./pileBooks.jpg" className="w-full" />
         </div>
-        <div>
-          <p>Introduction</p>
-          <input
-            name="intro"
-            onChange={handleChange}
-            value={intro}
-            className="border"
-          />
-        </div>
-        <div>
-          <p>Completed</p>
-          <input
-            type="checkbox"
-            name="completed"
-            onChange={handleChange}
-            value={completed}
-            className="border"
-          />
-        </div>
-        <div>
-          <p>Review</p>
-          <input
-            name="review"
-            onChange={handleChange}
-            value={review}
-            className="border"
-          />
-        </div>
-        <button>Register book</button>
-      </form>
+      </div>
     </Layout>
   );
 };
