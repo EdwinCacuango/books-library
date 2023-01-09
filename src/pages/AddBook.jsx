@@ -93,7 +93,7 @@ const AddBook = () => {
             />
           </div>
           <div className="my-3">
-            <label for="file-upload" className="flex items-center gap-3">
+            <label htmlFor="file-upload" className="flex items-center gap-3">
               <BsFillCloudArrowUpFill />
               Add a cover
             </label>
