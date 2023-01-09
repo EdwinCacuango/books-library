@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAppContext } from "../components/Store";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
@@ -7,6 +8,8 @@ const AddBook = () => {
   const [intro, setIntro] = useState("");
   const [completed, setCompleted] = useState(false);
   const [review, setReview] = useState("");
+
+  const store = useAppContext();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -44,6 +47,8 @@ const AddBook = () => {
       completed,
       review,
     };
+
+    store.createItem(newBook);
   };
   const handleFile = (e) => {
     const element = e.target;
