@@ -8,11 +8,7 @@ const AppContext = createContext({
 });
 
 const Store = ({ children }) => {
-  const [items, setItems] = useState(() => {
-    const arr = localStorage.getItem("books");
-    const books = JSON.parse(arr);
-    return books;
-  });
+  const [items, setItems] = useState([]);
 
   const createItem = (item) => {
     const temp = [...items];
@@ -21,8 +17,18 @@ const Store = ({ children }) => {
   };
 
   useEffect(() => {
-    const jsonArr = JSON.stringify(items);
-    localStorage.setItem("books", jsonArr);
+    const arr = localStorage.getItem("books");
+    if (arr !== null && arr !== undefined) {
+      const books = JSON.parse(arr);
+      setItems(books);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (items.length > 0) {
+      const jsonArr = JSON.stringify(items);
+      localStorage.setItem("books", jsonArr);
+    }
   }, [items]);
 
   const getItem = (id) => {
